@@ -14,7 +14,7 @@ docker build -t monero .
 You need to create a wallet (`data/mywallet`) before start wallet RPC, backup the 25 words.
 
 ```sh
-docker run --rm -it --name xmr -v `pwd`/data:/opt/data monero /opt/coin/monero-wallet-cli --password \"\" --generate-new-wallet /opt/data/mywallet --use-english-language-names --offline
+echo n | docker run --rm -i --name xmr -v `pwd`/data:/opt/data monero /opt/coin/monero-wallet-cli --password \"\" --generate-new-wallet /opt/data/mywallet --mnemonic-language English --offline --command version
 ```
 
 Then, start node and RPC:
