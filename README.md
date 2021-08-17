@@ -20,16 +20,16 @@ echo n | docker run --rm -i --name xmr -v `pwd`/data:/opt/data monero /opt/coin/
 Then, start node and RPC:
 
 ```sh
-docker run --restart unless-stopped -itd --name xmr -p 18088:18088 -v `pwd`/data:/opt/data monero
+docker run --restart always -itd --name xmr -p 18088:18088 -v `pwd`/data:/opt/data monero
 ```
 
 
 # Using pre-built docker image
 
-Using automated build image from <https://hub.docker.com/r/mixhq/monero/>:
+Using automated build image from <https://hub.docker.com/r/wshub/monero/>:
 
 ```sh
-docker run --restart unless-stopped -itd --name xmr -p 18088:18088 -v `pwd`/data:/opt/data mixhq/monero
+docker run --restart always -itd --name xmr -p 18088:18088 -v `pwd`/data:/opt/data wshub/monero
 ```
 
 
@@ -40,5 +40,5 @@ Download from <https://downloads.getmonero.org/blockchain.raw> (54GB, as of 2019
 ```sh
 # Save blockchain.raw to data/
 wget -O /data/blockchain.raw https://downloads.getmonero.org/blockchain.raw
-docker run --rm -it --name xmr -v `pwd`/data:/opt/data mixhq/monero /opt/coin/monero-blockchain-import --data-dir /opt/data/blocks --input-file /opt/data/blockchain.raw --dangerous-unverified-import 1
+docker run --rm -it --name xmr -v `pwd`/data:/opt/data wshub/monero /opt/coin/monero-blockchain-import --data-dir /opt/data/blocks --input-file /opt/data/blockchain.raw --dangerous-unverified-import 1
 ```
