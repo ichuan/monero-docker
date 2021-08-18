@@ -20,7 +20,7 @@ if test $# -eq 0; then
   done
   exec /opt/coin/monero-wallet-rpc \
     --wallet-file /opt/data/mywallet \
-    --password \"\" \
+    --password "" \
     --rpc-bind-ip 0.0.0.0 \
     --rpc-bind-port 18088 \
     --confirm-external-bind \
