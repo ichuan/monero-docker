@@ -8,9 +8,7 @@ if test $# -eq 0; then
   /opt/coin/monerod \
     --detach \
     --hide-my-port \
-    --rpc-bind-ip 0.0.0.0 \
-    --rpc-bind-port 18081 \
-    --confirm-external-bind \
+    --disable-rpc-ban \
     --data-dir /opt/data/blocks \
     --log-file /opt/data/monerod.log
   # wait until node started
@@ -20,11 +18,13 @@ if test $# -eq 0; then
   done
   exec /opt/coin/monero-wallet-rpc \
     --wallet-file /opt/data/mywallet \
+    --trusted-daemon \
     --password "" \
     --rpc-bind-ip 0.0.0.0 \
     --rpc-bind-port 18088 \
     --confirm-external-bind \
-    --disable-rpc-login
+    --disable-rpc-login \
+    --disable-rpc-ban
 else
   exec $@
 fi
